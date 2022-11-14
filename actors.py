@@ -1,35 +1,40 @@
+"""
+this snippet is used to 
+1.scrapping https://malpedia.caad.fkie.fraunhofer.de/actors
+   to get actor's name, aka, synonym, and the link to the description page.
+2. go through each description page to extract actor's description'
+3. write all actor's name, aka, synonym and description to actors.json file
+"""
 import requests
 from bs4 import BeautifulSoup
-import html5lib
+import json
 
 URL = "https://malpedia.caad.fkie.fraunhofer.de"
 ACTORS = 'actors'
 
 page = requests.get(URL+'/'+ACTORS)
-soup = BeautifulSoup(page.content, "html5lib")   
+soup = BeautifulSoup(page.content, "html.parser")   
 
 names = [name.text for name in soup.find_all(class_="common_name")]
 akas = [ aka['title'] if (aka := row.find(class_='fa fa-info-circle')) != None else 'aka: N/A' for row in soup.find_all(class_="clickable-row")]
 synonyms = [ (synonym:= row.find(class_='synonyms')).text  for row in soup.find_all(class_="clickable-row")]
-
-actors =list( zip(names, akas, synonyms) )
-
 links = [URL+link['data-href'] for link in soup.find_all( class_="clickable-row")]
 
-f = open('actors.txt', 'w', encoding='utf-8')
-
-# go through each page to extract the description 
 i = 0
-print("Wait until done, it will take time ... ...")
+total = len(names) #just a counter 
+descriptions = []
+print(f"There are total {total} acotors, it will take time, wait until done ... ...\n")
 for link in links:
+    # go through each page to extract the description 
     page = requests.get(link)
-    soup = BeautifulSoup(page.content, "html5lib")   
-#     print(actors[i])
-    f.writelines(actors[i]) #tuple
+    soup = BeautifulSoup(page.content, "html.parser")   
+    descriptions.append(soup.body.find_all(class_="col-xl-12")[1].select("p")[0].text.strip())
+    print(i, end=',')
     i += 1
     
-    # print(soup.body.find_all(class_="col-xl-12")[1].select("p")[0].text.strip())
-    f.write( soup.body.find_all(class_="col-xl-12")[1].select("p")[0].text.strip() )
+actors =list( zip(names, akas, synonyms, descriptions) )        
+
+with open('actors.json', 'w', encoding='utf-8', newline='\r\n') as f:
+    json.dump(actors, f, ensure_ascii=False, indent=4) #tuple list
     
-f.close()
-print("Done ... ...")
+print("\nDone ... ...")
