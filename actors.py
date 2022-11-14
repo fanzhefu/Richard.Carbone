@@ -16,12 +16,20 @@ actors =list( zip(names, akas, synonyms) )
 
 links = [URL+link['data-href'] for link in soup.find_all( class_="clickable-row")]
 
+f = open('actors.txt', 'w', encoding='utf-8')
 
 # go through each page to extract the description 
 i = 0
+print("Wait until done, it will take time ... ...")
 for link in links:
     page = requests.get(link)
     soup = BeautifulSoup(page.content, "html5lib")   
-    print(actors[i])
+#     print(actors[i])
+    f.writelines(actors[i]) #tuple
     i += 1
-    print(soup.body.find_all(class_="col-xl-12")[1].select("p")[0].text.strip())
+    
+    # print(soup.body.find_all(class_="col-xl-12")[1].select("p")[0].text.strip())
+    f.write( soup.body.find_all(class_="col-xl-12")[1].select("p")[0].text.strip() )
+    
+f.close()
+print("Done ... ...")
