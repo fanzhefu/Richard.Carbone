@@ -1,4 +1,6 @@
 # Richard.Carbone
+## actors.py
+scrapping 
 
 ## urls.py: </br>
 extract ip address and domain name from file like: </br>
@@ -11,4 +13,4 @@ into file: </br>
     domain_list.txt: </br>
         www.example.dom </br>
         www.test.tld </br>
-
+## domain2ip.py
