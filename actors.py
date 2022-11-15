@@ -32,9 +32,9 @@ for link in links:
     print(i, end=',')
     i += 1
     
-actors =list( zip(names, akas, synonyms, descriptions) )        
+actors =[{'name':name, 'aka':aka, 'synonym':synonym, 'description':description} for (name, aka, synonym, description) in list( zip(names, akas, synonyms, descriptions) ) ]       
 
 with open('actors.json', 'w', encoding='utf-8', newline='\r\n') as f:
-    json.dump(actors, f, ensure_ascii=False, indent=4) #tuple list
+    json.dump(actors, f, ensure_ascii=False, indent=4) #
     
 print("\nDone ... ...")
