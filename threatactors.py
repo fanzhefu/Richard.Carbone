@@ -30,5 +30,6 @@ THREATACTOR_NAME = [name.strip() for name in open('threatactors', 'r').readlines
 # loop through each threat actor
 for threat_actor in THREATACTOR_NAME:
     resp = requests.get(url=url+threat_actor, headers=headers, auth=HTTPBasicAuth(v4_public_key, v4_private_key))
-    print(json.dumps(resp.json(), indent=True))
-
+    #print(json.dumps(resp.json(), indent=True))
+    with open(threat_actor, 'w', encoding ='utf8') as json_file:
+        json.dump(resp.json(), json_file, allow_nan=False, indent=True)
