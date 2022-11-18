@@ -23,9 +23,8 @@ headers = {
 }
 
 params = None
-from requests.auth import HTTPBasicAuth
 
-# read all threatactors name from file "threatactors" into THREATACTOR_NAME 
+# read all threat actors name from file "threatactors" into THREATACTOR_NAME 
 THREATACTOR_NAME = [name.strip() for name in open('threatactors', 'r').readlines()]
 
 # loop through each threat actor
