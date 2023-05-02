@@ -9,7 +9,7 @@ import requests
 from bs4 import BeautifulSoup
 import time
 
-# News | CISA
+delay = 5 # 5 seconds btw connectiona 
 url_ic3 = "https://www.ic3.gov"
 years = [2020,2021,2022,'Current']  # read from the website
 
@@ -26,12 +26,12 @@ for year in years:
         if 'pdf' in link:
             urls.append(link)
 
-# write all the pdf 
+# write all the pdf out
 for url in urls:
     r=requests.get(url_ic3 + url).content
     file_name = url.split('/')[-1]
     print('writing file: ' + file_name + '')
     with open(file_name,'wb') as f:
         f.write(r)
-
+    time.sleep(delay)
 print('Done ... ... ')
