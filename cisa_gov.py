@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 import os
 import time
 
-delay = 2 #seconds
+delay = 5 #seconds
 
 url_cisa = "https://www.cisa.gov"
 news_pages = 61  # get from the website
