@@ -16,8 +16,8 @@ from bs4 import BeautifulSoup
 # News | CISA
 DELAY = 5  # seconds
 WEBSITE = "https://www.cisa.gov"
-#PAGES = 61  # get THIS NUMBER from the website
-PAGES = 1  # get THIS NUMBER from the website
+PAGES = 61  # get THIS NUMBER from the website
+#PAGES = 1  # get THIS NUMBER from the website
 
 # read all user agents in
 if os.path.exists('user-agents.txt'):
