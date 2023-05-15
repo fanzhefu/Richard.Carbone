@@ -16,8 +16,8 @@ from bs4 import BeautifulSoup
 # Cybersecurity Alerts & Advisories
 DELAY = 5  # seconds
 WEBSITE = "https://www.cisa.gov"
-#PAGES = 281  # get THIS NUMBER from the website
-PAGES = 1
+PAGES = 281  # get THIS NUMBER from the website
+#PAGES = 1
 # read all user agents in
 if os.path.exists('user-agents.txt'):
     USER_AGENTS = open('user-agents.txt', 'r', encoding='utf-8').readlines()
