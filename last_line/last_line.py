@@ -8,14 +8,16 @@ name = '""'
 
 with open(INPUT, 'r', encoding='utf-8') as f_in:
     aliases = f_in.readlines()
+    
 aliases.reverse()
 
-for i, alias in enumerate(aliases):
-    if aliases[i].split(',')[0] != name:
-        last_line.append(alias)
-        name = aliases[i].split(',')[0]
-
+for alias in aliases:
+    if alias.split(',')[0] != name:
+        last_line.append(alias.split(',')[0]+','+','.join(alias.split(',')[2:]))
+        name = alias.split(',')[0]
+        
 last_line.reverse()
+
 with open(OUTPUT, 'w', encoding='utf-8') as f_out:
     f_out.writelines(last_line)
 
