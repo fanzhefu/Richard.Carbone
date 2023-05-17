@@ -1,9 +1,12 @@
 #!/usr/bin/env python
 
+INPUT = 'aliasTEMP.txt'   # Input file name
+OUTPUT = 'last_line.txt'  # Output file name
+
 last_line, aliases = [], []
 name = '""'
 
-with open('aliasTEMP.txt', 'r', encoding='utf-8') as f_in:
+with open(INPUT, 'r', encoding='utf-8') as f_in:
     aliases = f_in.readlines()
 aliases.reverse()
 
@@ -13,5 +16,7 @@ for i, alias in enumerate(aliases):
         name = aliases[i].split(',')[0]
 
 last_line.reverse()
-with open('last_line.txt', 'w', encoding='utf-8') as f_out:
+with open(OUTPUT, 'w', encoding='utf-8') as f_out:
     f_out.writelines(last_line)
+
+print('Done... ...')
