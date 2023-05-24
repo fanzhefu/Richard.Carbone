@@ -1,0 +1,34 @@
+{
+  "id": "threat-actor--31613362-0ea7-596b-8941-8ede904e98ac",
+  "name": "UNC2710",
+  "type": "actor-mitre",
+  "attack-patterns": {
+    "Execution": [
+      {
+        "id": "attack-pattern--8c32eb4d-805f-4fc5-bf60-c4d476c131b5",
+        "attribution_scope": "confirmed",
+        "sub_techniques": [
+          {
+            "id": "attack-pattern--ef67e13e-5598-4adc-bdb2-998225874fa9",
+            "attribution_scope": "confirmed"
+          }
+        ]
+      }
+    ],
+    "Resource Development": [],
+    "Initial Access": [
+      {
+        "id": "attack-pattern--a62a8db3-f23a-4d8f-afd6-9dbc77e7813b",
+        "attribution_scope": "confirmed",
+        "sub_techniques": [
+          {
+            "id": "attack-pattern--2b742742-28c3-4e1b-bab7-8350d6300fa7",
+            "attribution_scope": "confirmed"
+          }
+        ]
+      }
+    ]
+  },
+  "is_publishable": true
+}
+"{\"threat-actors\": [{\"id\": \"threat-actor--31613362-0ea7-596b-8941-8ede904e98ac\", \"name\": \"UNC2710\", \"type\": \"actor-mitre\", \"attack-patterns\": {\"Execution\": [{\"id\": \"attack-pattern--8c32eb4d-805f-4fc5-bf60-c4d476c131b5\", \"attribution_scope\": \"confirmed\", \"sub_techniques\": [{\"id\": \"attack-pattern--ef67e13e-5598-4adc-bdb2-998225874fa9\", \"attribution_scope\": \"confirmed\"}]}], \"Resource Development\": [], \"Initial Access\": [{\"id\": \"attack-pattern--a62a8db3-f23a-4d8f-afd6-9dbc77e7813b\", \"attribution_scope\": \"confirmed\", \"sub_techniques\": [{\"id\": \"attack-pattern--2b742742-28c3-4e1b-bab7-8350d6300fa7\", \"attribution_scope\": \"confirmed\"}]}]}, \"is_publishable\": true}], \"attack-patterns\": {\"attack-pattern--ef67e13e-5598-4adc-bdb2-998225874fa9\": {\"x_mitre_is_subtechnique\": true, \"created\": \"2020-03-11T14:43:31.706Z\", \"name\": \"Malicious Link\", \"attack_pattern_identifier\": \"T1204.001\", \"modified\": \"2020-03-11T14:43:31.706Z\", \"description\": \"An adversary may rely upon a user clicking a malicious link in order to gain execution. Users may be subjected to social engineering to get them to click on a link that will lead to code execution. This user action will typically be observed as follow-on behavior from [Spearphishing Link](https://attack.mitre.org/techniques/T1566/002). Clicking on a link may also lead to other execution techniques such as exploitation of a browser or application vulnerability via [Exploitation for Client Execution](https://attack.mitre.org/techniques/T1203). Links may also lead users to download files that require execution via [Malicious File](https://attack.mitre.org/techniques/T1204/002).\", \"id\": \"attack-pattern--ef67e13e-5598-4adc-bdb2-998225874fa9\"}, \"attack-pattern--a62a8db3-f23a-4d8f-afd6-9dbc77e7813b\": {\"x_mitre_is_subtechnique\": false, \"created\": \"2020-03-02T18:45:07.892Z\", \"name\": \"Phishing\", \"attack_pattern_identifier\": \"T1566\", \"description\": \"Adversaries may send phishing messages to gain access to victim systems. All forms of phishing are electronically delivered social engineering. Phishing can be targeted, known as spearphishing. In spearphishing, a specific individual, company, or industry will be targeted by the adversary. More generally, adversaries can conduct non-targeted phishing, such as in mass malware spam campaigns.\\n\\nAdversaries may send victims emails containing malicious attachments or links, typically to execute malicious code on victim systems or to gather credentials for use of [Valid Accounts](https://attack.mitre.org/techniques/T1078). Phishing may also be conducted via third-party services, like social media platforms.\", \"modified\": \"2020-10-18T01:55:03.337Z\", \"id\": \"attack-pattern--a62a8db3-f23a-4d8f-afd6-9dbc77e7813b\"}, \"attack-pattern--8c32eb4d-805f-4fc5-bf60-c4d476c131b5\": {\"x_mitre_is_subtechnique\": false, \"created\": \"2018-04-18T17:59:24.739Z\", \"name\": \"User Execution\", \"attack_pattern_identifier\": \"T1204\", \"modified\": \"2020-03-11T14:55:56.315Z\", \"description\": \"An adversary may rely upon specific actions by a user in order to gain execution. Users may be subjected to social engineering to get them to execute malicious code by, for example, opening a malicious document file or link. These user actions will typically be observed as follow-on behavior from forms of [Phishing](https://attack.mitre.org/techniques/T1566).\\n\\nWhile [User Execution](https://attack.mitre.org/techniques/T1204) frequently occurs shortly after Initial Access it may occur at other phases of an intrusion, such as when an adversary places a file in a shared directory or on a user's desktop hoping that a user will click on it. This activity may also be seen shortly after [Internal Spearphishing](https://attack.mitre.org/techniques/T1534).\", \"id\": \"attack-pattern--8c32eb4d-805f-4fc5-bf60-c4d476c131b5\"}, \"attack-pattern--2b742742-28c3-4e1b-bab7-8350d6300fa7\": {\"x_mitre_is_subtechnique\": true, \"created\": \"2020-03-02T19:15:44.182Z\", \"name\": \"Spearphishing Link\", \"attack_pattern_identifier\": \"T1566.002\", \"description\": \"Adversaries may send spearphishing emails with a malicious link in an attempt to gain access to victim systems. Spearphishing with a link is a specific variant of spearphishing. It is different from other forms of spearphishing in that it employs the use of links to download malware contained in email, instead of attaching malicious files to the email itself, to avoid defenses that may inspect email attachments. \\n\\nAll forms of spearphishing are electronically delivered social engineering targeted at a specific individual, company, or industry. In this case, the malicious emails contain links. Generally, the links will be accompanied by social engineering text and require the user to actively click or copy and paste a URL into a browser, leveraging [User Execution](https://attack.mitre.org/techniques/T1204). The visited website may compromise the web browser using an exploit, or the user will be prompted to download applications, documents, zip files, or even executables depending on the pretext for the email in the first place. Adversaries may also include links that are intended to interact directly with an email reader, including embedded images intended to exploit the end system directly or verify the receipt of an email (i.e. web bugs/web beacons). Links may also direct users to malicious applications  designed to [Steal Application Access Token](https://attack.mitre.org/techniques/T1528)s, like OAuth tokens, in order to gain access to protected applications and information.(Citation: Trend Micro Pawn Storm OAuth 2017)\", \"modified\": \"2020-10-18T01:53:39.818Z\", \"id\": \"attack-pattern--2b742742-28c3-4e1b-bab7-8350d6300fa7\"}}}"

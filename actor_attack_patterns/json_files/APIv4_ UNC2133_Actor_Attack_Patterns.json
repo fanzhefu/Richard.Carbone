@@ -1,0 +1,27 @@
+{
+  "id": "threat-actor--6e5af625-aa16-5eee-b8d1-3cd1662fc89b",
+  "name": "UNC2133",
+  "type": "actor-mitre",
+  "attack-patterns": {
+    "Resource Development": [
+      {
+        "id": "attack-pattern--0458aab9-ad42-4eac-9e22-706a95bafee2",
+        "attribution_scope": "confirmed",
+        "sub_techniques": [
+          {
+            "id": "attack-pattern--79da0971-3147-4af6-a4f5-e8cd447cd795",
+            "attribution_scope": "confirmed"
+          }
+        ]
+      }
+    ],
+    "Initial Access": [
+      {
+        "id": "attack-pattern--a62a8db3-f23a-4d8f-afd6-9dbc77e7813b",
+        "attribution_scope": "confirmed"
+      }
+    ]
+  },
+  "is_publishable": true
+}
+"{\"threat-actors\": [{\"id\": \"threat-actor--6e5af625-aa16-5eee-b8d1-3cd1662fc89b\", \"name\": \"UNC2133\", \"type\": \"actor-mitre\", \"attack-patterns\": {\"Resource Development\": [{\"id\": \"attack-pattern--0458aab9-ad42-4eac-9e22-706a95bafee2\", \"attribution_scope\": \"confirmed\", \"sub_techniques\": [{\"id\": \"attack-pattern--79da0971-3147-4af6-a4f5-e8cd447cd795\", \"attribution_scope\": \"confirmed\"}]}], \"Initial Access\": [{\"id\": \"attack-pattern--a62a8db3-f23a-4d8f-afd6-9dbc77e7813b\", \"attribution_scope\": \"confirmed\"}]}, \"is_publishable\": true}], \"attack-patterns\": {\"attack-pattern--a62a8db3-f23a-4d8f-afd6-9dbc77e7813b\": {\"x_mitre_is_subtechnique\": false, \"created\": \"2020-03-02T18:45:07.892Z\", \"name\": \"Phishing\", \"attack_pattern_identifier\": \"T1566\", \"description\": \"Adversaries may send phishing messages to gain access to victim systems. All forms of phishing are electronically delivered social engineering. Phishing can be targeted, known as spearphishing. In spearphishing, a specific individual, company, or industry will be targeted by the adversary. More generally, adversaries can conduct non-targeted phishing, such as in mass malware spam campaigns.\\n\\nAdversaries may send victims emails containing malicious attachments or links, typically to execute malicious code on victim systems or to gather credentials for use of [Valid Accounts](https://attack.mitre.org/techniques/T1078). Phishing may also be conducted via third-party services, like social media platforms.\", \"modified\": \"2020-10-18T01:55:03.337Z\", \"id\": \"attack-pattern--a62a8db3-f23a-4d8f-afd6-9dbc77e7813b\"}, \"attack-pattern--0458aab9-ad42-4eac-9e22-706a95bafee2\": {\"x_mitre_is_subtechnique\": false, \"created\": \"2020-09-30T16:37:40.271Z\", \"name\": \"Acquire Infrastructure\", \"attack_pattern_identifier\": \"T1583\", \"description\": \"Before compromising a victim, adversaries may buy, lease, or rent infrastructure that can be used during targeting. A wide variety of infrastructure exists for hosting and orchestrating adversary operations. Infrastructure solutions include physical or cloud servers, domains, and third-party web services.(Citation: TrendmicroHideoutsLease) Additionally, botnets are available for rent or purchase.\\n\\nUse of these infrastructure solutions allows an adversary to stage, launch, and execute an operation. Solutions may help adversary operations blend in with traffic that is seen as normal, such as contact to third-party web services. Depending on the implementation, adversaries may use infrastructure that makes it difficult to physically tie back to them as well as utilize infrastructure that can be rapidly provisioned, modified, and shut down.\", \"modified\": \"2020-10-22T17:59:17.606Z\", \"id\": \"attack-pattern--0458aab9-ad42-4eac-9e22-706a95bafee2\"}, \"attack-pattern--79da0971-3147-4af6-a4f5-e8cd447cd795\": {\"x_mitre_is_subtechnique\": true, \"created\": \"2020-10-01T00:44:23.935Z\", \"name\": \"Virtual Private Server\", \"attack_pattern_identifier\": \"T1583.003\", \"description\": \"Before compromising a victim, adversaries may rent Virtual Private Servers (VPSs)\\u00a0that can be used during targeting. There exist a variety of cloud service providers that will sell virtual machines/containers as a service. By utilizing a VPS, adversaries can make it difficult to physically tie back operations to them. The use of cloud infrastructure can also make it easier for adversaries to rapidly provision, modify, and shut down their infrastructure.\\n\\nAcquiring a VPS for use in later stages of the adversary lifecycle, such as Command and Control, can allow adversaries to benefit from the ubiquity and trust associated with higher reputation cloud service providers. Adversaries may also acquire infrastructure from VPS service providers that are known for renting VPSs with minimal registration information, allowing for more anonymous acquisitions of infrastructure.(Citation: TrendmicroHideoutsLease)\", \"modified\": \"2020-10-22T17:58:32.476Z\", \"id\": \"attack-pattern--79da0971-3147-4af6-a4f5-e8cd447cd795\"}}}"
