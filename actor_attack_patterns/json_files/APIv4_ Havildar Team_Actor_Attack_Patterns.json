@@ -1,0 +1,8 @@
+{
+  "id": "threat-actor--34631d38-23ec-5ebc-a597-e4c0b5aaa216",
+  "name": "Havildar Team",
+  "type": "actor-mitre",
+  "attack-patterns": {},
+  "is_publishable": true
+}
+"{\"threat-actors\": [{\"id\": \"threat-actor--34631d38-23ec-5ebc-a597-e4c0b5aaa216\", \"name\": \"Havildar Team\", \"type\": \"actor-mitre\", \"attack-patterns\": {}, \"is_publishable\": true}], \"attack-patterns\": {}}"

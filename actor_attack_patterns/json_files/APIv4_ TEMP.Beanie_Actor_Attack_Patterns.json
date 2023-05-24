@@ -1,0 +1,8 @@
+{
+  "id": "threat-actor--8f7812cf-da3a-5762-81ac-9c6ff5fc813a",
+  "name": "TEMP.Beanie",
+  "type": "actor-mitre",
+  "attack-patterns": {},
+  "is_publishable": true
+}
+"{\"threat-actors\": [{\"id\": \"threat-actor--8f7812cf-da3a-5762-81ac-9c6ff5fc813a\", \"name\": \"TEMP.Beanie\", \"type\": \"actor-mitre\", \"attack-patterns\": {}, \"is_publishable\": true}], \"attack-patterns\": {}}"
