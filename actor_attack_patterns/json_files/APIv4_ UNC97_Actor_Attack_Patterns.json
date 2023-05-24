@@ -1,0 +1,21 @@
+{
+  "id": "threat-actor--cda01094-b237-5de2-98f3-63555072fc3c",
+  "name": "UNC97",
+  "type": "actor-mitre",
+  "attack-patterns": {
+    "Defense Evasion": [
+      {
+        "id": "attack-pattern--b3d682b6-98f2-4fb0-aa3b-b4df007ca70a",
+        "attribution_scope": "confirmed",
+        "sub_techniques": [
+          {
+            "id": "attack-pattern--deb98323-e13f-4b0c-8d94-175379069062",
+            "attribution_scope": "confirmed"
+          }
+        ]
+      }
+    ]
+  },
+  "is_publishable": true
+}
+"{\"threat-actors\": [{\"id\": \"threat-actor--cda01094-b237-5de2-98f3-63555072fc3c\", \"name\": \"UNC97\", \"type\": \"actor-mitre\", \"attack-patterns\": {\"Defense Evasion\": [{\"id\": \"attack-pattern--b3d682b6-98f2-4fb0-aa3b-b4df007ca70a\", \"attribution_scope\": \"confirmed\", \"sub_techniques\": [{\"id\": \"attack-pattern--deb98323-e13f-4b0c-8d94-175379069062\", \"attribution_scope\": \"confirmed\"}]}]}, \"is_publishable\": true}], \"attack-patterns\": {\"attack-pattern--b3d682b6-98f2-4fb0-aa3b-b4df007ca70a\": {\"x_mitre_is_subtechnique\": false, \"created\": \"2017-05-31T21:30:32.662Z\", \"name\": \"Obfuscated Files or Information\", \"attack_pattern_identifier\": \"T1027\", \"description\": \"Adversaries may attempt to make an executable or file difficult to discover or analyze by encrypting, encoding, or otherwise obfuscating its contents on the system or in transit. This is common behavior that can be used across different platforms and the network to evade defenses. \\n\\nPayloads may be compressed, archived, or encrypted in order to avoid detection. These payloads may be used during Initial Access or later to mitigate detection. Sometimes a user's action may be required to open and [Deobfuscate/Decode Files or Information](https://attack.mitre.org/techniques/T1140) for [User Execution](https://attack.mitre.org/techniques/T1204). The user may also be required to input a password to open a password protected compressed/encrypted file that was provided by the adversary. (Citation: Volexity PowerDuke November 2016) Adversaries may also used compressed or archived scripts, such as JavaScript. \\n\\nPortions of files can also be encoded to hide the plain-text strings that would otherwise help defenders with discovery. (Citation: Linux/Cdorked.A We Live Security Analysis) Payloads may also be split into separate, seemingly benign files that only reveal malicious functionality when reassembled. (Citation: Carbon Black Obfuscation Sept 2016)\\n\\nAdversaries may also obfuscate commands executed from payloads or directly via a [Command and Scripting Interpreter](https://attack.mitre.org/techniques/T1059). Environment variables, aliases, characters, and other platform/language specific semantics can be used to evade signature based detections and application control mechanisms. (Citation: FireEye Obfuscation June 2017) (Citation: FireEye Revoke-Obfuscation July 2017)(Citation: PaloAlto EncodedCommand March 2017) \", \"modified\": \"2020-09-16T19:24:20.601Z\", \"id\": \"attack-pattern--b3d682b6-98f2-4fb0-aa3b-b4df007ca70a\"}, \"attack-pattern--deb98323-e13f-4b0c-8d94-175379069062\": {\"x_mitre_is_subtechnique\": true, \"created\": \"2020-02-05T14:17:46.686Z\", \"name\": \"Software Packing\", \"attack_pattern_identifier\": \"T1027.002\", \"description\": \"Adversaries may perform software packing or virtual machine software protection to conceal their code. Software packing is a method of compressing or encrypting an executable. Packing an executable changes the file signature in an attempt to avoid signature-based detection. Most decompression techniques decompress the executable code in memory. Virtual machine software protection translates an executable's original code into a special format that only a special virtual machine can run. A virtual machine is then called to run this code.(Citation: ESET FinFisher Jan 2018) \\n\\nUtilities used to perform software packing are called packers. Example packers are MPRESS and UPX. A more comprehensive list of known packers is available, (Citation: Wikipedia Exe Compression) but adversaries may create their own packing techniques that do not leave the same artifacts as well-known packers to evade defenses.  \", \"modified\": \"2020-02-05T20:05:41.548Z\", \"id\": \"attack-pattern--deb98323-e13f-4b0c-8d94-175379069062\"}}}"
