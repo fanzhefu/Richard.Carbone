@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 __author__ = "Mandiant"
 ___version___ = "1.04"
 
