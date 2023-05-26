@@ -1,9 +1,8 @@
-
 #!/usr/bin/env python
 import os
 
 INPUT_DIR = 'json_files'
-OUTPUT_DIR = 'result'
+OUTPUT_DIR = 'results'
 
 if not os.path.exists(OUTPUT_DIR):
     os.makedirs(OUTPUT_DIR)

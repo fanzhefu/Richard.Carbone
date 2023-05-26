@@ -12,7 +12,7 @@ ___version___ = "1.04"
 # import threading
 # import traceback
 # import sys
-
+import os
 import json
 import requests
 from requests.auth import HTTPBasicAuth
@@ -29,6 +29,9 @@ v4_private_key = '22f8b00152b542aa101d75f38dbfb097558aaff11fc65b14278261ea160137
 
 with open(THREATACTOR_FILE, 'r', encoding='utf-8') as f:
     threatactors = f.readlines()
+if not os.path.exists('json_files'):
+    os.makedirs('json_files')
+
 
 def parseIndicators(actorArray):
     for actor in actorArray:
@@ -37,10 +40,12 @@ def parseIndicators(actorArray):
         with open(fname, "a", encoding="utf-8") as f:
             f.write(f"{indent_actor}" + '\n')
 
+
 for threatactor in threatactors:
     actor_id = threatactor.rstrip().split(',')[0]
-    actor_name = threatactor.rstrip().split(',')[1]
-    fname = 'APIv4_' + actor_name + '_Actor_Attack_Patterns.json'
+    actor_name = threatactor.rstrip().split(',')[1].strip()
+    fname = 'json_files\\' + \
+        actor_name.replace(" ", "_") + '_Actor_Attack_Patterns.json'
 
     accept_header = 'application/json'
     x_app_name = 'APIv4_' + actor_name + 'Actor_Attack-Patterns'
@@ -65,4 +70,4 @@ for threatactor in threatactors:
     with open(fname, "a", encoding="utf-8") as f:
         f.write(data_2)
 
-print("\nAll Done... ...")
+print("\nAll Done, check results in the folder: 'json_files ... ...")
