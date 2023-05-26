@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 __author__ = "Mandiant"
 ___version___ = "1.04"
 
@@ -28,14 +30,12 @@ v4_private_key = '22f8b00152b542aa101d75f38dbfb097558aaff11fc65b14278261ea160137
 with open(THREATACTOR_FILE, 'r', encoding='utf-8') as f:
     threatactors = f.readlines()
 
-
 def parseIndicators(actorArray):
     for actor in actorArray:
         indent_actor = json.dumps(actor, indent=2)
         # print (indent_actor)
         with open(fname, "a", encoding="utf-8") as f:
             f.write(f"{indent_actor}" + '\n')
-
 
 for threatactor in threatactors:
     actor_id = threatactor.rstrip().split(',')[0]
