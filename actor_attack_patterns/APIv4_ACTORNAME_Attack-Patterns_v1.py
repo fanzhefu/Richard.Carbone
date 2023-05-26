@@ -42,9 +42,9 @@ def parseIndicators(actorArray):
 for threatactor in threatactors:
     actor_id = threatactor.rstrip().split(',')[0]
     actor_name = threatactor.rstrip().split(',')[1].strip()
-    fname_json = 'json\\APIv4_' + \
+    fname_json = 'json\\' + \
         actor_name.replace(" ", "_") + '_Actor_Attack_Patterns.json'
-    fname_txt = 'txt\\APIv4_' + \
+    fname_txt = 'txt\\' + \
         actor_name.replace(" ", "_") + '_Actor_Attack_Patterns.txt'
 
     accept_header = 'application/json'
@@ -70,4 +70,4 @@ for threatactor in threatactors:
     with open(fname_txt, "a", encoding="utf-8") as f:
         f.write(data_2)
 
-print("\nAll Done, check results at folders "txt" and "json" ... ...")
+print('\nAll Done, check results in the folder: "txt" and "json" ... ...')
