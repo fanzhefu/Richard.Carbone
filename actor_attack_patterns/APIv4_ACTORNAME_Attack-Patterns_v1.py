@@ -19,7 +19,7 @@ from requests.auth import HTTPBasicAuth
 THREATACTOR_FILE = 'threatactors.txt'
 threatactors = []
 
-indicators = []
+#indicators = []
 #threadLimiter = threading.BoundedSemaphore(100)
 v4_URL = 'https://api.intelligence.mandiant.com'
 v4_public_key = '89635eb99d9f8fc1f3ad9e2e5c81eb9584346fb7f6e7f30e2b9e2684bef17966'
@@ -32,7 +32,6 @@ if not os.path.exists('json'):
 if not os.path.exists('txt'):
     os.makedirs('txt')
 
-
 def parseIndicators(actorArray):
     for actor in actorArray:
         indent_actor = json.dumps(actor, indent=2)
@@ -40,12 +39,13 @@ def parseIndicators(actorArray):
         with open(fname_json, "a", encoding="utf-8") as f:
             f.write(f"{indent_actor}" + '\n')
 
-
 for threatactor in threatactors:
     actor_id = threatactor.rstrip().split(',')[0]
-    actor_name = threatactor.rstrip().split(',')[1]
-    fname_json = 'json\\APIv4_' + actor_name + '_Actor_Attack_Patterns.json'
-    fname_txt = 'txt\\APIv4_' + actor_name + '_Actor_Attack_Patterns.txt'
+    actor_name = threatactor.rstrip().split(',')[1].strip()
+    fname_json = 'json\\APIv4_' + \
+        actor_name.replace(" ", "_") + '_Actor_Attack_Patterns.json'
+    fname_txt = 'txt\\APIv4_' + \
+        actor_name.replace(" ", "_") + '_Actor_Attack_Patterns.txt'
 
     accept_header = 'application/json'
     x_app_name = 'APIv4_' + actor_name + 'Actor_Attack-Patterns'
@@ -70,4 +70,4 @@ for threatactor in threatactors:
     with open(fname_txt, "a", encoding="utf-8") as f:
         f.write(data_2)
 
-print("\nAll Done... ...")
+print("\nAll Done, check results at folders "txt" and "json" ... ...")
