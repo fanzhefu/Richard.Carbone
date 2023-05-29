@@ -1,0 +1,34 @@
+ Dim ToAddress
+ Dim MessageSubject
+ Dim MessageBody
+ Dim MessageAttachment
+ 
+ Dim ol, ns, newMail
+ 
+ ToAddress = "richard.carbone@forces.gc.ca "
+ MessageSubject = "automation test"
+ MessageBody = "Good morning." & _ 
+ "This is a test for outlook/exchange automation." & _
+ "bob." & _
+ vbCrLf & vbCrLf
+ MessageAttachment = "C:\Users\Carbone.R\Desktop\Weekly_Report_Top10_20230529.pdf"
+ 
+ Set ol = WScript.CreateObject("Outlook.Application")
+ Set ns = ol.getNamespace("MAPI")
+ ns.logon "","",true,false
+ Set newMail = ol.CreateItem(olMailItem)
+ newMail.Subject = MessageSubject
+ newMail.Body = MessageBody & vbCrLf
+ 
+ ' validate the recipient, just in case...
+ Set myRecipient = ns.CreateRecipient(ToAddress)
+ myRecipient.Resolve
+ If Not myRecipient.Resolved Then
+ MsgBox "unknown recipient"
+ Else
+    newMail.Recipients.Add(myRecipient)
+    newMail.Attachments.Add(MessageAttachment).Displayname = "Weekly_Report_Top10_20230529.pdf"
+    newMail.Send
+ End If
+ 
+ Set ol = Nothing
