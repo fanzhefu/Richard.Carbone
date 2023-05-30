@@ -1,0 +1,43 @@
+┌──(kali㉿kali)-[~]
+└─$ cat names.txt
+facebook.com
+shanxi.ca
+cumt.ca
+google.ca
+thestar.com
+                                                                                                                                              
+┌──(kali㉿kali)-[~]
+└─$ dig -f names.txt +short                                      
+31.13.80.36
+74.208.236.25
+74.208.236.25
+142.251.41.35
+18.67.17.86
+18.67.17.84
+18.67.17.114
+18.67.17.18
+                                                                                                                                              
+┌──(kali㉿kali)-[~]
+└─$ cat ip.txt   
+31.13.80.36
+74.208.236.25
+74.208.236.25
+142.251.41.35
+18.67.17.18
+18.67.17.86
+18.67.17.84
+18.67.17.114
+                                                                                                                                              
+┌──(kali㉿kali)-[~]
+└─$ cat ip.txt | xargs -I {} dig @8.8.8.8 -x {} +short +timeout=1
+edge-star-mini-shv-01-yyz1.facebook.com.
+74-208-236-25.elastic-ssl.ui-r.com.
+74-208-236-25.elastic-ssl.ui-r.com.
+yyz12s08-in-f3.1e100.net.
+server-18-67-17-18.yto50.r.cloudfront.net.
+server-18-67-17-86.yto50.r.cloudfront.net.
+server-18-67-17-84.yto50.r.cloudfront.net.
+server-18-67-17-114.yto50.r.cloudfront.net.
+                                                                                                                                              
+┌──(kali㉿kali)-[~]
+└─$ 
