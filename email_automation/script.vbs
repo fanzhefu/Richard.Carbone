@@ -5,7 +5,12 @@
  
  Dim ol, ns, newMail, ToAddresses
  
- ToAddresses = Array( "zhefu.fan@forces.gc.ca", "richard.carbone@forces.gc.ca", "zhefu.fan@ecn.forces.gc.ca", "rcarbone@videotron.ca")
+ ToAddresses = Array( "zhefu.fan@forces.gc.ca", & _
+					"richard.carbone@ecn.forces.gc.ca", & _
+					"zhefu.fan@ecn.forces.gc.ca", & _
+					"richard.carbone@ecn.forces.gc.ca", & _
+					"rcarbone@videotron.ca", & _
+					"fanzhefu@gmail.com")
  
  MessageSubject = "automation test, please reply"
  MessageBody = "Good morning." & _ 
@@ -27,13 +32,13 @@
 	 Set myRecipient = ns.CreateRecipient(ToAddress)
 	 myRecipient.Resolve
 	 If Not myRecipient.Resolved Then
-	 'MsgBox "unknown recipient"
-	 WScript.Echo "unknown recipient"
+		 'MsgBox "unknown recipient"
+		 WScript.Echo "Unknown recipient:", ToAddress
 	 Else
 		newMail.Recipients.Add(myRecipient)
 		newMail.Attachments.Add(MessageAttachment).Displayname = "Test.txt"
 		newMail.Send
-		WScript.Echo ToAddress
+		WScript.Echo "Send to recipient:", ToAddress
 
 	 End If
  Next
