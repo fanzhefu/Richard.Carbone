@@ -15,4 +15,4 @@ for ip in ips:
         print(host[-1][0]+'\t'+host[0])
     except Exception as e:
         # print(ip.rstrip()+'\t'+'host-not-found')
-        continue
+        pass
