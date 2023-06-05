@@ -9,17 +9,17 @@ pip install yagmail
 import yagmail
 
 RECIPIENTS = ['fanzhefu@gmail.com', 'fanzhefu@hotmail.com',
-              'fanzhefu@forces.gc.ca', 'fanzhefu@ecn.forces.gc.ca']
+              'zhefu.fan@forces.gc.ca', 'zhefu.fan@ecn.forces.gc.ca']
 
 SENDER = 'ctic.cfnoc@gmail.com'
 PASSCODE = '0123456789abcdef'  # a token for gmail
 
-SUBJECT = 'Test Subject'
-CONTENT = ['The mail body content is here',
+SUBJECT = 'Automation Test Subject'
+CONTENT = ['The mail body content is here. \n \
+                                              \
+           Thank you',
            'attach_file1.txt', 'attach_file1.txt']  # attache files
 
-for recipient in RECIPIENTS:
-    with yagmail.SMTP(SENDER, PASSCODE) as yag:
-        yag.send(recipient, SUBJECT, CONTENT)
-        print('Sent email to ' + recipient + ' successfully')
-print('\nAll done... ...')
+with yagmail.SMTP(SENDER, PASSCODE) as yag:
+    yag.send(RECIPIENTS, SUBJECT, CONTENT)
+    print(f'Send email to {"; ".join(RECIPIENTS)} successfully')
