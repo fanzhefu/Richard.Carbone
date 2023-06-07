@@ -8,6 +8,7 @@ Created on Fri Jun  2 16:54:32 2023
 #!/usr/bin/python
 import socket
 ips = open('ip.txt').readlines()
+socket.setdefaulttimeout(2) #Default this is 30
 
 for ip in ips:
     try:
