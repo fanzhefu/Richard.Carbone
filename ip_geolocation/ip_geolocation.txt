@@ -1,0 +1,72 @@
+IP geolocation:
+
+geolocation-db.com(free) 
+    https://www.abstractapi.com/guides/how-to-geolocate-an-ip-address-in-python
+abstractapi.com
+
+
+ip2location, 
+Shodan, 
+ipstack, 
+ip-api(45 API requests per minute), and 
+ipgeolocation.
+   https://github.com/IPGeolocation/ip-geolocation-api-python-sdk
+
+https://github.com/topics/ip-geolocation?l=python
+ip2geotools: https://www.kdnuggets.com/2023/01/track-location-ip-address-python.html
+https://medium.com/@investigator515/ip-geo-location-for-beginners-4a67490b8e94
+https://medium.com/@kaineblack/using-python-to-convert-ip-addresses-into-user-locations-572387ef63b0
+https://osintbrasil.blogspot.com/2019/03/how-to-use-shodan-api-with-python-to.html
+$ sudo pip install shodan
+import shodan
+SHODAN_API_KEY = 
+api = shodan.Shodan(SHODAN_API_KEY)
+try:
+    results = api.search('apache')
+    # Show the results
+    print 'Results found: %s' % results'total'
+    for result in results'matches':
+	print 'IP: %s' % result'ip_str'
+	print result'data'
+	print ''
+except shodan.APIError, e:
+    print 'Error: %s' % e
+
+https://subscription.packtpub.com/book/security/9781784392932/1/ch01lvl1sec11/gathering-information-using-the-shodan-api
+
+import shodan
+import requests
+
+SHODAN_API_KEY = "{Insert your Shodan API key}" 
+api = shodan.Shodan(SHODAN_API_KEY)
+
+target = 'www.packtpub.com'
+
+dnsResolve = 'https://api.shodan.io/dns/resolve?hostnames=' + target + '&key=' + SHODAN_API_KEY
+
+try:
+    # First we need to resolve our targets domain to an IP
+    resolved = requests.get(dnsResolve)
+    hostIP = resolved.json()[target]
+
+    # Then we need to do a Shodan search on that IP
+    host = api.host(hostIP)
+    print "IP: %s" % host['ip_str']
+    print "Organization: %s" % host.get('org', 'n/a')
+    print "Operating System: %s" % host.get('os', 'n/a')
+
+    # Print all banners
+    for item in host['data']:
+        print "Port: %s" % item['port']
+        print "Banner: %s" % item['data']
+
+    # Print vuln information
+    for item in host['vulns']:
+        CVE = item.replace('!','')
+        print 'Vulns: %s' % item
+        exploits = api.exploits.search(CVE)
+        for item in exploits['matches']:
+            if item.get('cve')[0] == CVE:
+                print item.get('description')
+except:
+    'An error occured'
