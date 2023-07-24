@@ -1,0 +1,49 @@
+What Are The 10 Best IP Geolocation APIs For 2023?
+https://blog.apilayer.com/10-best-ip-geolocation-apis-in-2023/
+Ipstack
+Positionstack
+IP-API
+Abstract’s IP Geolocation API
+Maxmind
+Ipdata
+Ipgeolocation.io
+DB IP
+IP2Location
+ipinfo
+https://www.softwaretestinghelp.com/best-ip-geolocation-api/
+#1) ipstack (Recommended)
+#2) Abstract API
+#3) Maxmind
+#4) ipdata
+#5) ipgeolocation.io
+#6) IP-API
+#7) DB-API
+#8) IP2Location
+#9) ipinfo
+#10) Positionstack
+
+https://rapidapi.com/blog/ip-geolocation-api/
+ Telize API
+ IP Geo Location API
+ Referential API
+ RedLine Zipcode API
+ Geocoder - United States Census Bureau API
+ Get IP Info API
+ IP Location API
+ Geocode address to location API
+ IP geolocation API
+ IP Adress Geolocation API
+
+https://medium.com/the-era-of-apis/top-10-best-ip-geolocation-apis-210e3f568b63
++------------------+-----------------------------------------------+
+| Telize           | getting visitor IP address & location           |
+| Apilitiy.io      | free IP geolocation                             |
+| geoPlugin        | geo-targeting & currency conversion             |
+| IPWHOIS.io       | bulk IP geolocation & filtering out bot traffic |
+| Ipregistry       | IP geolocation and detecting threat data        |
+| Weatherbit       | JSON IP/GeoIP                                   |
+| BigDataCloud     | geolocation and network information             |
+| ipgeolocation.io | geotargeting, geofencing and local time info    |
+| IP Geo Location  | geographic location & currency information      |
+| ClearIP          | location-aware web and mobile apps              |
++------------------+-----------------------------------------------+
