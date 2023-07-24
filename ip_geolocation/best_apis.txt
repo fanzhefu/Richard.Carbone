@@ -47,3 +47,23 @@ https://medium.com/the-era-of-apis/top-10-best-ip-geolocation-apis-210e3f568b63
 | IP Geo Location  | geographic location & currency information      |
 | ClearIP          | location-aware web and mobile apps              |
 +------------------+-----------------------------------------------+
+https://ipdata.co/blog/best-ip-geolocation-services/
+IPData.co
+Maxmind
+Abstract’s IP Geolocation API
+IP Geolocation API
+ipapi.co
+ipstack.com
+ip-api.com
+ipgeolocation.io
+IP2Location
+ipify.org
+https://gbhackers.com/best-ip-geolocation-apis/
+7 Best IP Geolocation APIs in 2023
+Abstract
+IP2Location.io
+Ipbase
+ipgeolocation.io
+DB-IP
+ipdata
+ipinfo
