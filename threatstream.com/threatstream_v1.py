@@ -11,8 +11,7 @@ import json
 import requests
 
 MY_USER_NAME = 'richard.carbone@forces.gc.ca'
-#MY_API_KEY = '9551eebddd72e8bf7c33caa9ff4e233fb4357c29'
-MY_API_KEY = '9551eebddd72e8bc7f33faa9cc4e233cb4357f29'
+MY_API_KEY = '9551eebddd72e8bf7c33caa9ff4e233fb4357c29'
 TYPE = ['ip', 'hash', 'url', 'domain']
 FEED_ID = {'CCCS': 6727, 'PolySwarm': 5359, 'Cybersixgill': 3549, 'NixSpam': 2334,
            'URLHaus': 2656, 'Open_Phish_Feed': 136, 'Blocklist_Apache_Attacks': 104,
