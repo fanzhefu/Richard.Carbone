@@ -1,0 +1,64 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Jul 28 12:24:08 2023
+
+Extract data from nvd cves
+
+@author: fanzhefu
+"""
+import os
+import sys
+import json
+import zipfile
+
+INPUT_FILE = "nvdcve-1.1-2022.json.zip"
+OUTPUT_FILE = "nvdcve-1.1-2022.txt"
+
+if os.path.exists(OUTPUT_FILE):
+    print('\nRename '+OUTPUT_FILE+', and try again. ')
+    sys.exit(0)
+
+with zipfile.ZipFile(INPUT_FILE, "r") as z:
+    for filename in z.namelist():
+        #       print(filename)
+        with z.open(filename) as f:
+            json_raw = f.read().decode('utf-8')
+            json_data = json.loads(json_raw)
+
+for entry in json_data['CVE_Items']:
+
+    identity = entry['cve']['CVE_data_meta']['ID']
+    assigner = entry['cve']['CVE_data_meta']['ASSIGNER']
+    try:
+        problemtype = entry['cve']['problemtype']['problemtype_data'][0]['description'][0]['value']
+    except IndexError:
+        problemtype = ''
+
+    urls = ', '.join([item['url']
+                     for item in entry['cve']['references']['reference_data']])
+    description = entry['cve']['description']['description_data'][0]['value']
+
+    try:
+        configurations = ', '.join(
+            [item['cpe23Uri'] for item in entry['configurations']['nodes'][0]['cpe_match']])
+    except IndexError:
+        configurations = ''
+
+    try:
+        impact = entry['impact']['baseMetricV3']['cvssV3']
+        impacts = impact['attackVector']+' | '+impact['attackComplexity'] + \
+            ' | '+impact['privilegesRequired']+' | '+impact['userInteraction'] + \
+            ' | '+impact['confidentialityImpact']+' | '+impact['integrityImpact'] + \
+            ' | '+impact['availabilityImpact']+' | '+impact['baseSeverity']
+    except KeyError:
+        impacts = ''
+        
+    print('/nStarting')    
+    print('.', end='')
+    # print(identity+' | '+assigner+' | '+problemtype+' | '+urls +
+    #      ' | '+description+' | '+configurations+' | '+impacts)
+
+    with open(OUTPUT_FILE, 'a', encoding='utf-8') as output_file:
+        output_file.write(identity+' | '+assigner+' | '+problemtype+' | '+urls +
+                          ' | '+description+' | '+configurations+' | '+impacts+'\n')
+print("\nWell done !!!")
