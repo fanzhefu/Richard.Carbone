@@ -15,6 +15,7 @@ OUTPUT_DIR = "zip"
 if not os.path.exists(OUTPUT_DIR):
     os.makedirs(OUTPUT_DIR)
     
+# Data feeds https://nvd.nist.gov/vuln/data-feeds will be discontinued in September 2003    
 r = requests.get('https://nvd.nist.gov/vuln/data-feeds#JSON_FEED')
 for filename in re.findall("nvdcve-1.1-[0-9]*\.json\.zip", r.text):
     print(filename)
