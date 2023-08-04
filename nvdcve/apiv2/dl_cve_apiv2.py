@@ -28,8 +28,8 @@ for i in range(4):
         vulns = response['vulnerabilities']
 
         for vuln in vulns:
-            print(vuln['cve']['id'])
+            print(vuln['cve']['id'],end=', ')
             with open(YEAR+'.json', 'a', encoding='utf-8') as f:
                 json.dump(vuln, f, ensure_ascii=False, indent=4)
 
-print('\nDone, check the file "'+YEAR+'.json" for all the CVEs')
+print('\n\nDone, check the file "'+YEAR+'.json" for all the CVEs')
