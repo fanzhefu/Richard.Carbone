@@ -11,7 +11,7 @@ import json
 import requests
 
 # The year of all the CVEs to be downloaded.
-YEAR = 2003
+YEAR = 2023
 
 BASE_URL = 'https://services.nvd.nist.gov/rest/json/cves/2.0?'
 API_KEY = '168227f8-1383-4874-8275-470c4a96855e'
