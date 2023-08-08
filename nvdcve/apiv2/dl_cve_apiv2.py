@@ -46,7 +46,7 @@ def dl_cves(year: str):
             response = requests.get(
                 BASE_URL, params=params, headers=headers, timeout=30)
 
-            print(response.status_code)
+            #print(response.status_code)
             #response.encoding = 'utf-8'
             vulns = response.json()['vulnerabilities']
 
