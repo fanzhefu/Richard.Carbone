@@ -59,4 +59,5 @@ def dl_cves(year: str):
 
 
 if __name__ == "__main__":
+    YEAR = max(YEAR, 1988) #
     dl_cves(str(YEAR))
