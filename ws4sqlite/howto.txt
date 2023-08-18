@@ -1,0 +1,83 @@
+┌──(kali㉿kali)-[/tmp]
+└─$ wget https://github.com/proofrock/ws4sqlite/releases/download/v0.15.0/ws4sqlite-v0.15.0-linux-amd64.tar.gz
+
+┌──(kali㉿kali)-[/tmp]
+└─$ tar -xf ws4sqlite-v0.15.0-linux-amd64.tar.gz 
+ 
+┌──(kali㉿kali)-[~]
+└─$ ./ws4sqlite --db chinook.db --serve-dir=./
+[sudo] password for kali: 
+ws4sqlite v0.15.0, based on sqlite v3.41.2
+- Serving database 'chinook' from chinook.db?_pragma=journal_mode(WAL)
+  + No valid config file specified, using defaults
+  + Using WAL
+- Web Service listening on 0.0.0.0:12321
+
+┌──(kali㉿kali)-[/tmp]
+└─$ curl -XPOST -d '{"transaction": [{"query": "SELECT * FROM artists limit 5"}]}' -H 'Content-Type: application/json' 'http://localhost:12321/chinook'
+{"results":[{"success":true,"resultSet":[{"ArtistId":1,"Name":"AC/DC"},{"ArtistId":2,"Name":"Accept"},{"ArtistId":3,"Name":"Aerosmith"},{"ArtistId":4,"Name":"Alanis Morissette"},{"ArtistId":5,"Name":"Alice In Chains"}]}]}  
+
+
+https://medium.com/@oss_20381/sqlite-from-a-web-page-f6ff87231e04
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>ALMVM</title>
+    <script defer src="voting.js"></script>
+  </head>
+  <body>
+    <h1>A lean, mean voting machine</h1>
+    <label for="vote">Plz vote:</label>
+    <select id="vote" name="vote">
+  <option value="1">⭐</option>
+  <option value="2">⭐⭐</option>
+  <option value="3" selected>⭐⭐⭐</option>
+  <option value="4">⭐⭐⭐⭐</option>
+  <option value="5">⭐⭐⭐⭐⭐</option>
+    </select>
+    <button id="submit-btn">Submit</button>
+    <p id="average-score">Average score: <span id="score">please cast a vote to see it</span></p>
+    <script>
+      const submitBtn = document.getElementById("submit-btn");
+      const voteSelect = document.getElementById("vote");
+      const scoreSpan = document.getElementById("score");
+
+      // Add event listener to the submit button
+      submitBtn.addEventListener("click", async () => {
+        scoreSpan.textContent = await submitVoteAndGetAverageScore(voteSelect.value);
+      });
+    </script>
+  </body>
+</html>
+
+voting.js
+async function submitVoteAndGetAverageScore(myVote) {
+    const req = {
+        transaction: [
+            {
+                statement: "UPDATE VOTES_TABLE SET NUM_VOTES = NUM_VOTES + 1, TOTAL = TOTAL + :vote",
+                values: {vote: myVote},
+            }, 
+            {
+                query: "SELECT CAST(TOTAL AS REAL) / NUM_VOTES AS AVG FROM VOTES_TABLE",
+            }
+        ]
+    }
+
+    const res = await fetch("/votes", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(req)
+    });
+    const result = await res.json();
+    return result.results[1].resultSet[0].AVG;
+}
+voting.ymal
+useOnlyStoredStatements: true
+storedStatements:
+  - id: SQL1
+    sql: UPDATE VOTES_TABLE SET NUM_VOTES = NUM_VOTES + 1, TOTAL = TOTAL + :vote
+  - id: SQL2
+    sql: SELECT CAST(TOTAL AS REAL) / NUM_VOTES AS AVG FROM VOTES_TABLE
