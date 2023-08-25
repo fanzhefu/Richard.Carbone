@@ -1,0 +1,3 @@
+hdiceupkklgiqlir
+ctic.cfnoc@gmail.com 
+From May 30, 2022, no “Allow less secure apps to ON” is allowed for any Google account. Therefore, the previous Gmail authentication method in Python will not work anymore.
