@@ -20,7 +20,7 @@ import imaplib
 import email
 
 USER = 'ctic.cfnoc@gmail.com'
-PASSWORD = 'hdifeupkklgiqlir'
+PASSWORD = 'hdiceupkklgiqlir'
 IMAP_URL = 'imap.gmail.com'
 OUTPUT_DIR = '.'
 #LABEL = 'SENT'
