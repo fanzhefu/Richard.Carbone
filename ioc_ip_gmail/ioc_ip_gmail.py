@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Aug 28 12:34:43 2023
+
+@author: Zhefu
+"""
+
 # https://medium.com/@sdoshi579/to-read-emails-and-download-attachments-in-python-6d7d6b60269
 # https://www.geeksforgeeks.org/python-fetch-your-gmail-emails-from-a-particular-user/
 # Importing libraries
@@ -20,11 +27,11 @@ import imaplib
 import email
 
 USER = 'ctic.cfnoc@gmail.com'
-PASSWORD = 'hdiceupkklgiqlir'
+PASSWORD = 'hdifeupkklgiqlir'
 IMAP_URL = 'imap.gmail.com'
 OUTPUT_DIR = '.'
-#LABEL = 'SENT'
-LABEL = '"[Gmail]/Sent Mail"'
+LABEL = 'Inbox'
+#LABEL = '"[Gmail]/Sent Mail"'
 SEARCH_KEY = 'subject'
 SEARCH_VALUE = 'IOCS'
 
@@ -62,6 +69,7 @@ con.select(LABEL)
 # result is id’s of all the found emails.
 mail_ids = search(SEARCH_KEY, SEARCH_VALUE, con)
 
+i = 0 # index the number of files
 for mail_id in mail_ids[0].split():
     typ, data = con.fetch(mail_id, '(RFC822)')
     raw_email = data[0][1]
@@ -76,14 +84,16 @@ for mail_id in mail_ids[0].split():
             continue
         if part.get('Content-Disposition') is None:
             continue
-        fileName = part.get_filename()
+        fileName = f"{i:04}" +'_'+ part.get_filename() 
+        #to avoid identical file names
         if bool(fileName):
             filePath = os.path.join(OUTPUT_DIR, fileName)
             if not os.path.isfile(filePath):
                 with open(filePath, 'wb') as fp:
                     fp.write(part.get_payload(decode=True))
-                fp.close()
+                #fp.close()
             subject = str(email_message).split(
                 "Subject: ", 1)[1].split("\nTo:", 1)[0]
             print(f'Downloaded "{fileName}" from email titled "{subject}"')
+        i += 1
 print('\nWell done... ')
