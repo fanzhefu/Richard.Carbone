@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block title %}Search{% endblock %}
+
+{% block page_body %}
+    <div class="row">
+        <p>
+            <h4>This is search!! You can see only because you are {{ get_username() }}</h4>
+        </p>
+    </div>
+
+       <form method="post">
+           <div class="form-group">
+           <label for="type">Type:</label>
+          
+               <input type="radio" name="type" value="fqdn" checked>fqdn
+               <input type="radio" name="type" value="ipv4">ipv4
+               <input type="radio" name="type" value="md5">md5
+               <input type="radio" name="type" value="url">url <br>
+           
+            <div class="form-control">
+            <label for="value">Value:  </label>
+            <input type="text" id="value" name="value" required><br></div>
+            <div class="form-control">
+            <label for="actor">Actor:  </label>
+            <input type="text" id="actor" name="actor" ><br></div>
+            <div class="form-control">
+            <label for="malware">Malware:</label>
+            <input type="text" id="malware" name="malware" ><br></div>
+           <input type="submit" value="Search">
+           
+           </div>
+       </form>
+
+        <!-- (b) output search results -->
+        {% if results %}
+        <table id="demo">
+        <thead>
+        <tr>
+          <th>score</th>
+          <th>value</th>
+          <th>last_seen</th>
+          <th>first_seen</th>
+          <th>last_update</th>
+          <th>feed</th>
+          <th>md5</th>
+          <th>sha1</th>
+          <th>shar256</th>
+          
+          <th>actor</th>
+          <th>malware</th>
+        </tr>
+      </thead>
+          {% for result in results %}
+          <tr>
+            <td>{{ result[0] }}</td>
+            <td>{{ result[1] }}</td>
+            <td>{{ result[2] }}</td>
+            <td>{{ result[3] }}</td>
+            <td>{{ result[4] }}</td>
+            <td>{{ result[5] }}</td>
+            <td>{{ result[6] }}</td>
+            <td>{{ result[7] }}</td>
+            <td>{{ result[8] }}</td>
+            <td>{{ result[9] }}</td>
+            <td>{{ result[10] }}</td>
+            
+          </tr>
+         {% endfor %}
+        </table>
+        {% else %}
+        <div id="demo">No search results.</div>
+    {% endif %}
+
+    
+
+    
+    
+    
+    
+{% endblock %}

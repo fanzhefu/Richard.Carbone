@@ -1,0 +1,1 @@
+https://stackoverflow.com/questions/74590346/search-function-in-flask-with-sqlite
