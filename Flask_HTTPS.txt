@@ -1,0 +1,65 @@
+
+https://blog.miguelgrinberg.com/post/running-your-flask-application-over-https
+
+Flask HTTPS
+
+1. Adhoc
+app.run(host='0.0.0.0', port=8080, debug=True, ssl_context='adhoc')
+$ pip install pyopenssl
+
+from flask import Flask
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    return "Hello World!"
+
+if __name__ == "__main__":
+    app.run(ssl_context='adhoc')
+
+2. Self-Signed Certificates 
+app.run(host='0.0.0.0', port=8080, debug=True, ssl_context=('mycert.pem', 'mykey.pem'))
+
+$ openssl req -x509 -newkey rsa:4096 -nodes -out mycert.pem -keyout mykey.pem -days 365
+
+from flask import Flask
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    return "Hello World!"
+
+if __name__ == "__main__":
+    app.run(ssl_context=('mycert.pem', 'mykey.pem'))
+
+3. Using Production Web Servers
+$ gunicorn --certfile cert.pem --keyfile key.pem -b 0.0.0.0:8000 hello:app
+nginx 
+server {
+    listen 443 ssl http2;
+    server_name example.com;
+    ssl_certificate /path/to/cert.pem;
+    ssl_certificate_key /path/to/key.pem;
+    # ...
+}
+server {
+    listen 80;
+    server_name example.com;
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+4. Using "Real" Certificates
+
+5. Achieving an SSL A+ Grade
+
+
+
+
+
+
+
+
+
+
