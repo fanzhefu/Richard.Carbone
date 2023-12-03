@@ -1,6 +1,7 @@
 # /usr/bin/env python
 '''
-12/02/2023 as all the  https://thn.news/qc2YJvUY (there are 60 of them)transfered to
+12/02/2023
+as all the  https://thn.news/qc2YJvUY (there are 60 of them)transfered to
 https://www.vanta.com/downloads/minimize-third-party-risk-with-strong-vendor-management?utm_campaign=ToF&utm_source=thehackernews&utm_medium=newsletter
 so they were removed from scraping...
 '''
