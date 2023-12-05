@@ -36,7 +36,7 @@ value = args.value if args.value else '_'
 source = args.source if args.source else '_'
 actor = args.actor if args.actor else '_'
 malware = args.malware if args.malware else '_'
-print(table, value, source, actor, malware)
+#print(table, value, source, actor, malware)
 
 
 with sqlite3.connect(DB_FILE) as conn:

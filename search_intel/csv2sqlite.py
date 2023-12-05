@@ -1,21 +1,20 @@
-# /usr/bin/env python
-
+#/usr/bin/env python
 # -*- coding: utf-8 -*-
+
 """
 Created on Wed Nov 29 15:34:31 2023
 
 @author: fan.z
-"""
-'''
+
 Converting TESTDATA.csv file into sqlite3 database
 1. splite testdate file into four files: fqdn.csv, ipv4.csv, url.csv, md5.csv;
 2. input fqdn.csv, ipv4.csv, url.csv, md5.csv into sqlit3 as four tables.
 notes:
     hash column in md5 splited into sha1, sha256;
-    didn't break down the columns sources, threat_actors and malwares
-'''
-#import pandas as pd
-# importing csv module
+    didn't break down the sources, threat_actors and malwares columns.
+"""
+
+# pip install csv_to_sqlite
 import csv
 import csv_to_sqlite
 
@@ -25,7 +24,8 @@ OUTPUT_FQDN = 'fqdn.csv'
 OUTPUT_IPV4 = 'ipv4.csv'
 OUTPUT_URL = 'url.csv'
 OUTPUT_MD5 = 'md5.csv'
-#OUTPUT_OTHER = 'other.csv'
+
+OUTPUT_DATABASE = 'TESTDATA.db'
 
 fqdn_fields = ['score', 'value', 'last_seen_date', 'first_seen_date',
                'last_updated_date', 'sources', 'hash', 'threat_actors', 'malwares']
@@ -103,6 +103,6 @@ with open(OUTPUT_FQDN, 'w', newline='', encoding='utf-8') as csv_fqdn, \
 
 print("Import csv files into database:")
 options = csv_to_sqlite.CsvOptions(typing_style="full", encoding="utf-8")
-input_files = ["fqdn.csv", "ipv4.csv", "url.csv", "md5.csv"] # pass in a list of CSV files
-csv_to_sqlite.write_csv(input_files, "output.sqlite", options)
+input_files = [OUTPUT_FQDN, OUTPUT_IPV4, OUTPUT_URL, OUTPUT_MD5] # pass in a list of CSV files
+csv_to_sqlite.write_csv(input_files, OUTPUT_DATABASE, options)
 print('Well done ...')
